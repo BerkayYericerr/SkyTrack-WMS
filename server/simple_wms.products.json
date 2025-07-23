@@ -1,0 +1,24 @@
+[{
+  "_id": {
+    "$oid": "67a644d93963b651ddf8a39c"
+  },
+  "name": "kutu",
+  "quantity": 9,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a644ef3963b651ddf8a39e"
+  },
+  "name": "kutu",
+  "quantity": 9,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67a644f23963b651ddf8a3a0"
+  },
+  "name": "kutu",
+  "quantity": 9,
+  "__v": 0
+}]

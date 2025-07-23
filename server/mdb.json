@@ -1,0 +1,108 @@
+[{
+  "_id": {
+    "$oid": "67d7fbb837407432bc100619"
+  },
+  "customer": "Print Advanced International",
+  "itemType": "PAPER",
+  "itemCode": "PAI-1179",
+  "itemName": "Advanced Paper",
+  "itemId": "1189972",
+  "description": "",
+  "expirationDate": {
+    "$date": "2025-06-06T00:00:00.000Z"
+  },
+  "unitValue": "45.00",
+  "upcCode": "09872239412495",
+  "printJob": 9762,
+  "printJobDate": {
+    "$date": "2025-03-28T00:00:00.000Z"
+  },
+  "reorderQuantity": 21,
+  "poItem": true,
+  "leadTime": "2",
+  "perContainer": 15,
+  "lot": "733974566",
+  "imageUpload": "",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d7fcf337407432bc10061b"
+  },
+  "customer": "Print Advanced International",
+  "itemType": "PAPER",
+  "itemCode": "PAI-1179",
+  "itemName": "Advanced Paper",
+  "itemId": "1189972",
+  "description": "",
+  "expirationDate": {
+    "$date": "2025-06-11T00:00:00.000Z"
+  },
+  "unitValue": "45.00",
+  "upcCode": "769754357",
+  "printJob": 8941280,
+  "printJobDate": {
+    "$date": "2025-03-27T00:00:00.000Z"
+  },
+  "reorderQuantity": 110,
+  "poItem": false,
+  "leadTime": "2",
+  "perContainer": 310,
+  "lot": "733964589",
+  "imageUpload": "",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d7ff6437407432bc10061d"
+  },
+  "customer": "Print Advanced International",
+  "itemType": "Elektronik Bileşen",
+  "itemCode": "2245713-DEVREKART",
+  "itemName": "Devre Kartı",
+  "itemId": "DK-224",
+  "description": "4 katmanlı PCB devre kartı, 100x100 mm ölçülerinde, yüksek hızda veri iletimi için tasarlanmış.",
+  "expirationDate": {
+    "$date": "2030-01-01T00:00:00.000Z"
+  },
+  "unitValue": "10 USD",
+  "upcCode": "98724249532",
+  "printJob": 283214,
+  "printJobDate": {
+    "$date": "2025-02-06T00:00:00.000Z"
+  },
+  "reorderQuantity": 500,
+  "poItem": false,
+  "leadTime": "7",
+  "perContainer": 110,
+  "lot": "A001-100",
+  "imageUpload": "",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d8004537407432bc10061f"
+  },
+  "customer": "Print Advanced International",
+  "itemType": "Elektronik Bileşen",
+  "itemCode": "213124-DEVREKART",
+  "itemName": "Devre Kartı",
+  "itemId": "DK-001",
+  "description": "4 katmanlı PCB devre kartı, 100x100 mm ölçülerinde, yüksek hızda veri iletimi için tasarlanmış.",
+  "expirationDate": {
+    "$date": "2030-01-01T00:00:00.000Z"
+  },
+  "unitValue": "10",
+  "upcCode": "0981721491",
+  "printJob": 8941204,
+  "printJobDate": {
+    "$date": "2025-03-17T00:00:00.000Z"
+  },
+  "reorderQuantity": 500,
+  "poItem": false,
+  "leadTime": "7",
+  "perContainer": 100,
+  "lot": "98712455",
+  "imageUpload": "",
+  "__v": 0
+}]

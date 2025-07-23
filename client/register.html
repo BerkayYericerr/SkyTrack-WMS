@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Text&display=swap" rel="stylesheet">
+  <title>Skyconis - Kayıt Ol</title>
+  <style>
+    body {
+      font-family: 'Big Shoulders Text', cursive;
+      background: linear-gradient(#141e30, #243b55);
+      color: white;
+      text-align: center;
+    }
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Kayıt Ol</h2>
+    <form id="registerForm">
+      <input type="text" id="username" name="username" placeholder="Kullanıcı Adı" required>
+      <input type="password" id="password" name="password" placeholder="Şifre (min. 6 karakter)" required minlength="6">
+      <input type="password" id="confirmPassword" placeholder="Şifre Tekrarı" required>
+      <button type="submit">Kayıt Ol</button>
+    </form>
+    <p>Zaten bir hesabınız var mı? <a href="login.html">Giriş Yap</a></p>
+  </div>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      if (password !== confirmPassword) {
+        alert("Şifreler uyuşmuyor!");
+        return;
+      }
+
+      try {
+        const response = await fetch("http://localhost:5000/api/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert("Kayıt başarılı! Şimdi giriş yapabilirsiniz.");
+          window.location.href = "login.html";
+        } else {
+          alert("Kayıt hatası: " + result.message);
+        }
+      } catch (error) {
+        console.error("Bağlantı hatası:", error);
+        alert("Sunucuya bağlanılamadı!");
+      }
+    });
+  </script>
+</body>
+</html>

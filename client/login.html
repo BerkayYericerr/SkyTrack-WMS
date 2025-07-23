@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Text&display=swap" rel="stylesheet">
+    <title>Skyconis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.2/css/all.css">
+    <style>
+      /* Genel Stil */
+      @charset "UTF-8";
+      html, body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Big Shoulders Text', cursive;
+        background: linear-gradient(#141e30, #243b55);
+      }
+      
+      /* Login Başlık ve Kutusu İçin Ortak Stil */
+      .login-header, .login-box {
+        position: absolute;
+        left: 50%;
+        width: 400px;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.5);
+        box-shadow: 0 15px 25px rgba(0,0,0,0.6);
+        border-radius: 10px;
+        color: #fff;
+        text-align: center;
+      }
+      
+      /* Login Başlık Kutusu */
+      .login-header {
+        top: calc(50% - 250px); /* Login kutusunun üstünde konumlanır */
+        padding: 20px;
+        font-size: 20px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+      
+      /* Logonun boyutu */
+      .login-header img {
+        height: 40px;
+        width: auto;
+      }
+      
+      /* Login Kutusu */
+      .login-box {
+        top: 50%;
+        padding: 40px;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+      }
+      
+      .login-box h2 {
+        margin: 0 0 30px;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+      }
+      
+      .login-box .user-box {
+        position: relative;
+      }
+      
+      .login-box .user-box input {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        margin-bottom: 30px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        outline: none;
+        background: transparent;
+      }
+      
+      .login-box .user-box label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        pointer-events: none;
+        transition: .5s;
+      }
+      
+      .login-box .user-box input:focus ~ label,
+      .login-box .user-box input:valid ~ label {
+        top: -20px;
+        left: 0;
+        color: #03e9f4;
+        font-size: 12px;
+      }
+      
+      .login-box form a {
+        position: relative;
+        display: inline-block;
+        padding: 10px 20px;
+        color: #03e9f4;
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: .5s;
+        margin-top: 40px;
+        letter-spacing: 4px;
+      }
+      
+      .login-box a:hover {
+        background: #03e9f4;
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #03e9f4,
+                    0 0 25px #03e9f4,
+                    0 0 50px #03e9f4,
+                    0 0 100px #03e9f4;
+      }
+      
+      .login-box a span {
+        position: absolute;
+        display: block;
+      }
+      
+      .login-box a span:nth-child(1) {
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #03e9f4);
+        animation: btn-anim1 1s linear infinite;
+      }
+      
+      @keyframes btn-anim1 {
+        0% { left: -100%; }
+        50%,100% { left: 100%; }
+      }
+      
+      .login-box a span:nth-child(2) {
+        top: -100%;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(180deg, transparent, #03e9f4);
+        animation: btn-anim2 1s linear infinite;
+        animation-delay: .25s;
+      }
+      
+      @keyframes btn-anim2 {
+        0% { top: -100%; }
+        50%,100% { top: 100%; }
+      }
+      
+      .login-box a span:nth-child(3) {
+        bottom: 0;
+        right: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(270deg, transparent, #03e9f4);
+        animation: btn-anim3 1s linear infinite;
+        animation-delay: .5s;
+      }
+      
+      @keyframes btn-anim3 {
+        0% { right: -100%; }
+        50%,100% { right: 100%; }
+      }
+      
+      .login-box a span:nth-child(4) {
+        bottom: -100%;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(360deg, transparent, #03e9f4);
+        animation: btn-anim4 1s linear infinite;
+        animation-delay: .75s;
+      }
+      
+      @keyframes btn-anim4 {
+        0% { bottom: -100%; }
+        50%,100% { bottom: 100%; }
+      }
+    </style>
+  </head>
+  <body>
+    
+    <!-- Login Başlık Kutusu (Logo ve Başlık Metni) -->
+    <div class="login-header">
+      <!-- Logo: Yerel dosya yolu kullanılır; mümkünse göreceli yol kullanın -->
+      <img src="syconis.jpg" alt="Skyconis Logo">
+      Skycon Warehouse Management System 
+    </div>
+    
+    <!-- Login Kutusu -->
+    <div class="login-box">
+      <h2>Login</h2>
+     <!-- Formun onsubmit olayında tarayıcıyı inventory.html'e yönlendiriyoruz -->
+     <form id="loginForm" onsubmit="login(event)">
+        <div class="user-box">
+          <input type="text" id="username" name="username" required>
+          <label>Username</label>
+        </div>
+        <div class="user-box">
+          <input type="password" id="password" name="password" required>
+          <label>Password</label>
+        </div>
+        <a href="#" onclick="document.getElementById('loginForm').requestSubmit();">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <button type="button">Submit</button>
+        </a>
+      </form>
+      <p>Hesabınız yok mu? <a href="register.html">Kayıt Ol</a></p>
+    </div>
+  
+    <script>
+      async function login(event) {
+        event.preventDefault();
+    
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+    
+        try {
+          const response = await fetch("http://localhost:5000/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
+          });
+    
+          const result = await response.json();
+    
+          if (response.ok) {
+            localStorage.setItem("token", result.token);
+            alert("Giriş başarılı!");
+            window.location.href = "index.html";
+          } else {
+            alert("Hatalı giriş: " + result.message);
+          }
+        } catch (error) {
+          alert("Sunucu hatası: " + error.message);
+        }
+      }
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </body>
+</html>

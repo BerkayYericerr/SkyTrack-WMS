@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple WMS - Inventory</title>
+  <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Text&display=swap" rel="stylesheet">
+  <style>
+
+    
+#productTable {
+    width: 100%; 
+    max-width: 1100px; 
+    margin: 20px auto; 
+    border-collapse: collapse;
+    font-size: 18px; 
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+#productTable thead {
+    background-color: #243b55;
+    color: white;
+    font-weight: bold;
+}
+
+#productTable th, #productTable td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+
+#productTable button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.edit-btn {
+    background-color: #5bc0de;
+    color: white;
+}
+.edit-btn:hover {
+    background-color: #31b0d5;
+}
+
+.delete-btn {
+    background-color: #d9534f;
+    color: white;
+}
+.delete-btn:hover {
+    background-color: #c9302c;
+}
+
+   
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Big Shoulders Text', cursive;
+      background: linear-gradient(#141e30, #243b55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .inventory-container {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+      padding: 20px 40px;
+      width: 90%;
+      max-width: 1100px;
+      color: #fff;
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+    
+    .inventory-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .inventory-header img {
+      height: 50px;
+      width: auto;
+    }
+    .inventory-header h1 {
+      font-size: 28px;
+      margin: 0;
+    }
+    
+    form fieldset {
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 5px;
+      margin-bottom: 20px;
+      padding: 10px 15px;
+    }
+    form fieldset legend {
+      padding: 0 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    form .form-group {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 15px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    form .form-group label {
+      flex: 0 0 200px;
+      font-weight: bold;
+    }
+    form .form-group input,
+    form .form-group textarea,
+    form .form-group select {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      min-width: 150px;
+    }
+    form .form-group input[type="checkbox"] {
+      flex: 0;
+      width: auto;
+    }
+    /* İşlem Butonları - Yatay Hizalama */
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+    .action-buttons button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .action-buttons button:hover {
+      background-color: #45a049;
+    }
+    .action-buttons button.cancel {
+      background-color: #d9534f;
+    }
+    .action-buttons button.cancel:hover {
+      background-color: #c9302c;
+    }
+    .action-buttons button.reports {
+      background-color: #5bc0de;
+    }
+    .action-buttons button.reports:hover {
+      background-color: #31b0d5;
+    }
+    .action-buttons button.copy {
+      background-color: #f0ad4e;
+    }
+    .action-buttons button.copy:hover {
+      background-color: #ec971f;
+    }
+  </style>
+</head>
+<body>
+  <div class="inventory-container">
+    <!-- Üst Kısım: Logo ve Başlık -->
+    <div class="inventory-header">
+      <img src="syconis.jpg" alt="Skyconis Logo">
+      <h1>Skycon Warehouse Management System - Inventory</h1>
+    </div>
+    
+    <!-- Ürün Ekleme/Düzenleme Formu -->
+    <form id="productForm">
+      <!-- 1. Ürün Bilgileri -->
+      <fieldset>
+        <legend>Ürün Bilgileri</legend>
+        <div class="form-group">
+          <label for="customer">Customer :</label>
+          <input type="text" id="customer" name="customer" value="Print Advanced International" required>
+        </div>
+        <div class="form-group">
+          <label for="itemType">Item Type :</label>
+          <input type="text" id="itemType" name="itemType" placeholder="PAPER" required>
+        </div>
+        <div class="form-group">
+          <label for="itemCode">Item Code :</label>
+          <input type="text" id="itemCode" name="itemCode" placeholder="PAI-11679" required>
+        </div>
+        <div class="form-group">
+          <label for="itemName">Item Name :</label>
+          <input type="text" id="itemName" name="itemName" placeholder="Advanced Paper" required>
+        </div>
+	<div class="form-group">
+          <label for="itemId">Item ID :</label>
+          <input type="text" id="itemId" name="itemId"  required>
+        </div>
+        <div class="form-group">
+          <label for="description">Description :</label>
+          <textarea id="description" name="description" placeholder="Special Paper created by PAI" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="expirationDate">Expiration Date :</label>
+          <input type="date" id="expirationDate" name="expirationDate" required>
+        </div>
+      </fieldset>
+      
+      <!-- 2. Stok ve Fiyatlandırma Detayları -->
+      <fieldset>
+        <legend>Stok ve Fiyatlandırma Detayları</legend>
+        <div class="form-group">
+          <label for="unitValue">Unit Value :</label>
+          <input type="text" id="unitValue" name="unitValue" placeholder="$0.00" required>
+        </div>
+        <div class="form-group">
+          <label for="reorderPoint">UPC Code :</label>
+          <input type="number" id="UPC Code" name="UPC Code" placeholder="098775643216558" required>
+        </div>
+	<div class="form-group">
+          <label for="Print Job # ">Print Job # :</label>
+          <input type="number" id="Printjob" name="PrintJob" placeholder="8941280" required>
+        </div>
+	 <div class="form-group">
+          <label for="Print Job Date">Print Job Date :</label>
+          <input type="date" id="Print Job Date" name="Print Job Date" required>
+        </div>
+        <div class="form-group">
+          <label for="reorderQuantity">Reorder Quantity :</label>
+          <input type="number" id="reorderQuantity" name="reorderQuantity" placeholder="9" required>
+        </div>
+      </fieldset>
+      
+      
+      <fieldset>
+        <legend>Diğer Özellikler</legend>
+        <div class="form-group">
+          <label for="poItem">PO Item :</label>
+          <input type="checkbox" id="poItem" name="poItem">
+        </div>
+        <div class="form-group">
+          <label for="leadTime">Lead Time :</label>
+          <input type="text" id="leadTime" name="leadTime" placeholder="1 gün" required>
+        </div>
+        <div class="form-group">
+          <label for="perContainer"># Stock :</label>
+          <input type="number" id="perContainer" name="perContainer" placeholder="310" required>
+        </div>
+        <div class="form-group">
+          <label for="imageUpload">Image Upload :</label>
+          <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
+        </div>
+        <div class="form-group">
+          <label for="lot">Lot :</label>
+          <input type="text" id="lot" name="lot" placeholder="733964519" required>
+        </div>
+      </fieldset>
+      
+      
+      <div class="action-buttons">
+        <button type="submit" class="save">Save (Kaydet)</button>
+        <button type="button" class="cancel" onclick="cancelAction()">Cancel (İptal Et)</button>
+        <button type="button" class="reports" onclick="viewReports()">Reports (Raporlar)</button>
+        <button type="button" class="copy" onclick="copyProduct()">Copy (Kopyala)</button>
+      </div>
+    </form>
+    <button class="reports" onclick="window.location.href='products.html'">Ürün Listesini Görüntüle</button>
+
+  
+  
+
+    
+    <script src="script.js"></script>
+    <script>
+      if (!localStorage.getItem("token")) {
+        window.location.href = "login.html";
+      }
+    </script>
+</body>
+</html>

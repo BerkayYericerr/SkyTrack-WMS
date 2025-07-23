@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ürün Listesi</title>
+  <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Text&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Big Shoulders Text', cursive;
+      background: linear-gradient(#141e30, #243b55);
+      color: white;
+      text-align: center;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 20px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: rgba(255, 255, 255, 0.95);
+      color: black;
+    }
+    th, td {
+      padding: 15px;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #243b55;
+      color: white;
+    }
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 5px;
+    }
+    .edit-btn { background-color: #5bc0de; color: white; }
+    .edit-btn:hover { background-color: #31b0d5; }
+    .delete-btn { background-color: #d9534f; color: white; }
+    .delete-btn:hover { background-color: #c9302c; }
+    .back-btn { background-color: #f0ad4e; color: white; }
+    .back-btn:hover { background-color: #ec971f; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Ürün Listesi</h1>
+    <button class="back-btn" onclick="window.location.href='index.html'">Ürün Ekle</button>
+    <table id="productTable">
+      <thead>
+        <tr>
+          <th>Ürün Kodu</th>
+          <th>Ürün Adı</th>
+          <th>Birim Fiyat</th>
+          <th>Stock</th>
+          <th>İşlemler</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", fetchProducts);
+  </script>
+  <script>
+    if (!localStorage.getItem("token")) {
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>
